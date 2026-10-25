@@ -1,0 +1,10 @@
+---
+description: Write, draft, or compose an LLM prompt — follow skill write-prompt, not a freeform paragraph
+alwaysApply: true
+---
+
+# Write prompt
+
+When the user asks to write, draft, or compose a **prompt** for a model, follow skill `write-prompt`. Read its `SKILL.md` and run it. Do not invent a parallel format.
+
+A skill, `AGENTS.md`, or `CLAUDE.md` is `writing-for-agents`, not this.

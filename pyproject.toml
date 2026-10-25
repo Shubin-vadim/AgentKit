@@ -1,0 +1,49 @@
+[project]
+name = "agent-kit"
+version = "0.1.0"
+description = "Install agent-kit profiles (skills, rules, MCP servers) into projects for any agent client."
+requires-python = ">=3.12"
+dependencies = ["pydantic>=2.9,<3"]
+
+[dependency-groups]
+dev = ["mypy>=1.13", "pytest>=8.3", "ruff>=0.8"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+include = ["*.py", "*.pyi"]  # never reformat code samples inside Markdown skills
+line-length = 88
+target-version = "py312"
+src = ["scripts"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "C90", "PL", "UP"]
+
+[tool.ruff.lint.pylint]
+max-args = 4
+max-branches = 12
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["agent_kit"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["PLR2004"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "scripts,tests"
+explicit_package_bases = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]

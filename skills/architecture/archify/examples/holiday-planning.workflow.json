@@ -1,0 +1,142 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Remaining 2026 holiday schedule",
+    "quality_profile": "showcase",
+    "legend": {
+      "entries": {
+        "backend": {
+          "label": "Holiday"
+        },
+        "security": {
+          "label": "Make-up workday"
+        },
+        "external": {
+          "label": "Milestone"
+        }
+      }
+    },
+    "output": "holiday-planning.html"
+  },
+  "lanes": [
+    {
+      "id": "calendar",
+      "label": "Timeline"
+    },
+    {
+      "id": "makeup",
+      "label": "Shifted workdays"
+    }
+  ],
+  "mainPath": [
+    "today",
+    "mid_autumn",
+    "national_day",
+    "year_end"
+  ],
+  "nodes": [
+    {
+      "id": "today",
+      "lane": "calendar",
+      "col": 0,
+      "type": "external",
+      "label": "Today, Sep 22",
+      "sublabel": "Tue · 3 days left",
+      "icon": "clock"
+    },
+    {
+      "id": "mid_autumn",
+      "lane": "calendar",
+      "col": 1,
+      "type": "backend",
+      "label": "Mid-Autumn",
+      "sublabel": "Sep 25–27 · 3 days",
+      "tag": "No make-up day",
+      "icon": "moon"
+    },
+    {
+      "id": "national_day",
+      "lane": "calendar",
+      "col": 3,
+      "type": "backend",
+      "label": "National Day",
+      "sublabel": "Oct 1–7 · 7 days",
+      "tag": "Long break",
+      "icon": "calendar"
+    },
+    {
+      "id": "year_end",
+      "lane": "calendar",
+      "col": 5,
+      "type": "external",
+      "label": "Until year end",
+      "sublabel": "No public holidays",
+      "icon": "flag"
+    },
+    {
+      "id": "makeup_work",
+      "lane": "makeup",
+      "col": 3,
+      "type": "security",
+      "label": "Make-up day",
+      "sublabel": "Oct 10 (Saturday)",
+      "tag": "Workday",
+      "icon": "briefcase"
+    }
+  ],
+  "edges": [
+    {
+      "id": "to_mid_autumn",
+      "from": "today",
+      "to": "mid_autumn",
+      "label": "Break in 3 days"
+    },
+    {
+      "id": "mid_to_national",
+      "from": "mid_autumn",
+      "to": "national_day",
+      "label": "3 workdays after"
+    },
+    {
+      "id": "to_year_end",
+      "from": "national_day",
+      "to": "year_end",
+      "label": "Holidays end"
+    },
+    {
+      "id": "makeup_branch",
+      "from": "national_day",
+      "to": "makeup_work",
+      "label": "National Day shift",
+      "role": "branch",
+      "variant": "security"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Mid-Autumn Festival",
+      "items": [
+        "Off Friday Sep 25 through Sunday Sep 27, 3 days",
+        "Joins the weekend, so no extra make-up workday"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "National Day",
+      "items": [
+        "Off Thursday Oct 1 through Wednesday Oct 7, 7 days with shifted workdays",
+        "The Sunday Sep 20 workday has already passed",
+        "Saturday Oct 10 is a make-up workday"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Before year end",
+      "items": [
+        "After the National Day break there are no more public holidays in 2026"
+      ]
+    }
+  ]
+}

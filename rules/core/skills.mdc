@@ -1,0 +1,14 @@
+---
+description: Use installed skill folders instead of paraphrasing them
+alwaysApply: true
+---
+
+# Skills
+
+Installed skills are directories in the project's skills folder (`.cursor/skills/`, `.claude/skills/`, `.opencode/skills/`, or `.agents/skills/`, depending on the client). Each has a `SKILL.md`.
+
+When the user names a skill, or the task is that skill's job, read `SKILL.md` and follow it. Do not retell the skill in chat instead of running it.
+
+If the `{name}` folder is absent there, the skill is not installed. Work without it, or say it is missing.
+
+Stack layout (an app tree, adapters) comes from the matching skill when that folder exists. Do not invent a parallel tree.

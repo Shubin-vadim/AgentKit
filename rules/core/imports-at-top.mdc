@@ -1,0 +1,25 @@
+---
+description: Put imports at module top, never inside functions, classes, or methods
+alwaysApply: true
+---
+
+# Imports at top
+
+Every `import` / `from … import` belongs at **module scope**, at the top of the file (after the module docstring and `from __future__`). Add a new name next to the other imports, not next to the first use.
+
+Do not import inside functions, classes, methods, loops, or `if`/`try` that are not the module body.
+
+```python
+# BAD
+def load() -> None:
+    import json
+    json.loads("{}")
+
+# GOOD
+import json
+
+def load() -> None:
+    json.loads("{}")
+```
+
+`TYPE_CHECKING` blocks stay at module top. Delayed imports in `main.py` after `configure_application()` stay at module scope — still not inside a function.

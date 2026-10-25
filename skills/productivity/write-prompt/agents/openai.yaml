@@ -1,0 +1,3 @@
+interface:
+  display_name: "Write Prompt"
+  short_description: "Tagged LLM prompt: Role, Task, Instructions"

@@ -1,0 +1,12 @@
+---
+description: Spike and hypothesis work — plan first, run only if asked; no OpenSpec, no prod
+alwaysApply: true
+---
+
+# Spike
+
+The user is testing a hypothesis or doing ad-hoc work.
+
+Follow skill `spike`: write the checkable plan first. Run throwaway work in `.scratch/` only if they asked to run it. Do not call `openspec-propose`, do not write ADRs or arc42, do not change production code. One note in `docs/hypotheses/`.
+
+OpenSpec only when the user says this is now a feature.

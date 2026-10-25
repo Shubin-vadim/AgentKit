@@ -1,0 +1,11 @@
+name: vllm
+skills:
+  - vllm-gpu
+rules:
+  - vllm-gpu
+templates:
+  - vllm/README.md => docker/vllm/README.md
+  - vllm/PLAYBOOK.md => docker/vllm/PLAYBOOK.md
+  - vllm/compose.yaml => docker/vllm/compose.yaml
+  - vllm/.env.example => docker/vllm/.env.example
+  - vllm/.gitignore => docker/vllm/.gitignore

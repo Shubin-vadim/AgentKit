@@ -1,0 +1,19 @@
+---
+description: arc42 system design — spine with pointers, skip empty sections
+globs: docs/arc42.md, docs/C4.md, docs/quality.md
+alwaysApply: false
+---
+
+# arc42
+
+System design docs use the [arc42](https://arc42.org/) 12-section skeleton. The spine is `docs/arc42.md`.
+
+Diagrams live in `docs/C4.md`. Decisions live in `adr/NNNN-slug.md`. Glossary is `CONTEXT.md`. Quality scenarios live in `docs/quality.md`.
+
+Sections **point** at those files. Do not paste Mermaid or ADR bodies into the spine.
+
+When the user asked for a system design, always write §1, §3, §5, §9, §12. Skip any other section with one line of why. Do not pad.
+
+Terms come from `CONTEXT.md`. A hard-to-reverse choice is an ADR, not a paragraph in §4 or §9.
+
+Writing or updating the spine: skill `system-design`.

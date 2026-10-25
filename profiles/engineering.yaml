@@ -1,0 +1,34 @@
+name: engineering
+skills:
+  - domain-modeling
+  - codebase-design
+  - grill-with-docs
+  - improve-codebase-architecture
+  - clean-code
+  - python-code-style
+  - dependency-injection
+  - design-patterns
+  - singleton-pattern
+  - factory-pattern
+  - api-design-patterns
+  - design-patterns-catalog
+  - abstract-factory-pattern
+  - factory-method-pattern
+  - builder-pattern
+  - prototype-pattern
+  - adapter-pattern
+  - bridge-pattern
+  - composite-pattern
+  - decorator-pattern
+  - facade-pattern
+  - proxy-pattern
+  - chain-of-responsibility-pattern
+  - command-pattern
+  - iterator-pattern
+  - mediator-pattern
+  - memento-pattern
+  - observer-pattern
+  - state-pattern
+  - strategy-pattern
+  - template-method-pattern
+  - visitor-pattern

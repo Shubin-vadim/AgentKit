@@ -1,0 +1,9 @@
+# The repository's Ruff settings, plus the website generator's own package.
+extend = "../pyproject.toml"
+src = ["../scripts", "."]
+
+[lint.isort]
+known-first-party = ["agent_kit", "site_catalog"]
+
+[lint.per-file-ignores]
+"tests/**" = ["PLR2004"]

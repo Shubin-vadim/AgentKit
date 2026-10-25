@@ -1,0 +1,45 @@
+name: Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.2
+      - uses: actions/configure-pages@v6
+
+      - name: Check the catalog generator
+        run: |
+          uv run --group dev ruff check website
+          uv run --group dev python -m pytest website/tests -p no:cacheprovider
+          MYPYPATH="scripts:website" uv run --group dev python -m mypy website/site_catalog website/build_catalog.py website/tests
+
+      - name: Generate skill and profile pages
+        run: uv run website/build_catalog.py
+
+      - name: Build the site
+        run: uv run --no-project --with zensical==0.0.72 zensical build --clean -f website/zensical.toml
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: website/build
+
+      - uses: actions/deploy-pages@v5
+        id: deployment

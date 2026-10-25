@@ -1,0 +1,11 @@
+name: sglang
+skills:
+  - sglang-gpu
+rules:
+  - sglang-gpu
+templates:
+  - sglang/README.md => docker/sglang/README.md
+  - sglang/PLAYBOOK.md => docker/sglang/PLAYBOOK.md
+  - sglang/compose.yaml => docker/sglang/compose.yaml
+  - sglang/.env.example => docker/sglang/.env.example
+  - sglang/.gitignore => docker/sglang/.gitignore

@@ -1,0 +1,27 @@
+# Local MLflow tracking (SQLite + volume). Own compose project.
+# UI: http://localhost:5000
+name: llm-mlflow
+
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    command:
+      - mlflow
+      - server
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5000"
+      - --backend-store-uri
+      - sqlite:////mlflow/mlflow.db
+      - --default-artifact-root
+      - /mlflow/artifacts
+    volumes:
+      - mlflow_data:/mlflow
+
+volumes:
+  mlflow_data:

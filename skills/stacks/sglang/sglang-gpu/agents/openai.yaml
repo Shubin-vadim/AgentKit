@@ -1,0 +1,3 @@
+interface:
+  display_name: "SGLang GPU"
+  short_description: "SGLang on a blank NVIDIA GPU server"

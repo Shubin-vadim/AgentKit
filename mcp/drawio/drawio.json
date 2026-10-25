@@ -1,0 +1,6 @@
+{
+  "drawio": {
+    "command": "npx",
+    "args": ["-y", "@drawio/mcp@1.10.0"]
+  }
+}

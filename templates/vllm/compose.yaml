@@ -1,0 +1,21 @@
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    container_name: vllm
+    restart: unless-stopped
+    ipc: host
+    gpus: all
+    ports:
+      - "${VLLM_BIND:-127.0.0.1:8000}:8000"
+    volumes:
+      - ${VLLM_HF_CACHE:-/var/lib/vllm/hf}:/root/.cache/huggingface
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+      VLLM_API_KEY: ${VLLM_API_KEY}
+    command:
+      - --model
+      - ${VLLM_MODEL:-Qwen/Qwen2.5-7B-Instruct}
+      - --served-model-name
+      - ${VLLM_SERVED_NAME:-llm}
+      - --api-key
+      - ${VLLM_API_KEY}

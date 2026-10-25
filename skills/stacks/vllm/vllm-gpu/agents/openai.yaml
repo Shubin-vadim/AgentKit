@@ -1,0 +1,3 @@
+interface:
+  display_name: "vLLM GPU"
+  short_description: "vLLM on a blank NVIDIA GPU server"

@@ -1,0 +1,18 @@
+---
+description: Write or change tests only when the user asked for tests
+alwaysApply: true
+---
+
+# Tests on request
+
+Add, expand, or generate tests **only when the user asked** (test, pytest, coverage, "write a test", "cover this").
+
+A request to implement a feature, fix a bug, or refactor is not a request for tests. Ship the change without new test files.
+
+```text
+# asked: "add GET /items"
+# BAD — also creates backend/tests/api/test_items.py
+# GOOD — only the endpoint; tests wait for an explicit ask
+```
+
+If tests already fail because of your change, say so. Do not silently add a suite to make CI green unless the user asked.

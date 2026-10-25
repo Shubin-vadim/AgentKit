@@ -1,0 +1,10 @@
+---
+description: Local Docker catalog for LLM/AI tools — use llm-infra commands, not invented compose
+globs: docker/llm-infra/**,templates/llm-infra/**
+---
+
+# LLM infra
+
+When starting Qdrant, Langfuse, MLflow, Postgres, Redis, Kafka, Ollama, or the other services in this folder, use `bash up.sh …` or `docker compose -f compose.yaml --profile …` from this catalog (`docker/llm-infra/` after apply, `templates/llm-infra/` in the kit). Do not write a new compose file unless the user asked to extend the catalog. Copy `docker run` lines from `docker-run.md`.
+
+Local only. `postgres` and `pgvector` both bind 5432. Langfuse UI is port 3100 (`dev@example.com` / `changeme`). Procedure: skill `llm-infra`.

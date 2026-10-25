@@ -1,0 +1,34 @@
+name: core
+skills:
+  - handoff
+  - grill-me
+  - grilling
+  - writing-for-agents
+  - wait-what
+  - eli5
+  - caveman
+  - write-prompt
+  - research
+  - code-review
+  - apply-kit
+  - openspec-init
+  - openspec-explore
+  - openspec-propose
+  - openspec-apply-change
+  - openspec-update-change
+  - openspec-sync-specs
+  - openspec-archive-change
+rules:
+  - language
+  - skills
+  - tests-on-request
+  - imports-at-top
+  - openspec
+  - write-prompt
+mcp:
+  - context7
+  - codegraph
+templates:
+  - AGENTS.md
+  - CONTEXT.md
+  - docs/agents/issue-tracker.md

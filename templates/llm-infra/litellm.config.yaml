@@ -1,0 +1,9 @@
+# Local LiteLLM → Ollama. Start ollama first, then pull a model: docker exec llm-ollama ollama pull llama3.2
+model_list:
+  - model_name: llama3.2
+    litellm_params:
+      model: ollama/llama3.2
+      api_base: http://ollama:11434
+
+litellm_settings:
+  drop_params: true

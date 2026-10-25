@@ -1,0 +1,9 @@
+{
+  "codegraph": {
+    "command": "npx",
+    "args": ["-y", "@colbymchenry/codegraph@1.6.2", "serve", "--mcp"],
+    "env": {
+      "CODEGRAPH_TELEMETRY": "0"
+    }
+  }
+}

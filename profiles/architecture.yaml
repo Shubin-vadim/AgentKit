@@ -1,0 +1,23 @@
+name: architecture
+skills:
+  - adr-write
+  - c4-diagrams
+  - quality-scenarios
+  - architecture-styles
+  - threat-model
+  - system-design
+  - arc42-c4
+  - architecture-review
+  - architecture-lint
+  - archify
+rules:
+  - arc42
+mcp:
+  - drawio
+templates:
+  - architecture/docs/C4.md => docs/C4.md
+  - architecture/docs/arc42.md => docs/arc42.md
+  - architecture/docs/quality.md => docs/quality.md
+  - architecture/docs/threat-model.md => docs/threat-model.md
+  - architecture/adr/README.md => adr/README.md
+  - architecture/adr/_template.md => adr/_template.md

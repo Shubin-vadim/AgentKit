@@ -1,0 +1,16 @@
+name: llm-infra
+skills:
+  - llm-infra
+rules:
+  - llm-infra
+templates:
+  - llm-infra/README.md => docker/llm-infra/README.md
+  - llm-infra/compose.yaml => docker/llm-infra/compose.yaml
+  - llm-infra/langfuse.yaml => docker/llm-infra/langfuse.yaml
+  - llm-infra/mlflow.yaml => docker/llm-infra/mlflow.yaml
+  - llm-infra/litellm.config.yaml => docker/llm-infra/litellm.config.yaml
+  - llm-infra/.env.example => docker/llm-infra/.env.example
+  - llm-infra/.gitignore => docker/llm-infra/.gitignore
+  - llm-infra/up.sh => docker/llm-infra/up.sh
+  - llm-infra/down.sh => docker/llm-infra/down.sh
+  - llm-infra/docker-run.md => docker/llm-infra/docker-run.md

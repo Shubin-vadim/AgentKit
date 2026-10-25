@@ -1,0 +1,28 @@
+services:
+  sglang:
+    image: lmsysorg/sglang:latest
+    container_name: sglang
+    restart: unless-stopped
+    ipc: host
+    shm_size: "32gb"
+    gpus: all
+    ports:
+      - "${SGLANG_BIND:-127.0.0.1:30000}:30000"
+    volumes:
+      - ${SGLANG_HF_CACHE:-/var/lib/sglang/hf}:/root/.cache/huggingface
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    command:
+      - python3
+      - -m
+      - sglang.launch_server
+      - --model-path
+      - ${SGLANG_MODEL:-Qwen/Qwen2.5-7B-Instruct}
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "30000"
+      - --served-model-name
+      - ${SGLANG_SERVED_NAME:-llm}
+      - --api-key
+      - ${SGLANG_API_KEY}

@@ -1,0 +1,18 @@
+---
+description: Binding domain language from CONTEXT.md
+alwaysApply: true
+---
+
+# Language
+
+Read `CONTEXT.md` before naming a domain concept. Use glossary terms exactly.
+
+When two words mean the same thing, pick the glossary word. List the other under `_Avoid_` in `CONTEXT.md` — then stop using it.
+
+```md
+**Invoice**:
+A request for payment sent to a customer after delivery.
+_Avoid_: Bill, payment request
+```
+
+Say `Invoice`, not `Bill`. General programming words (timeout, handler, queue) stay out of the glossary.

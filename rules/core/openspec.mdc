@@ -1,0 +1,16 @@
+---
+description: OpenSpec is the spec layer — TZ and changes live under openspec/
+alwaysApply: true
+---
+
+# OpenSpec
+
+Feature work from a description (TZ, change, "what to build"): [OpenSpec](https://github.com/Fission-AI/OpenSpec).
+
+If `openspec/` is missing: `openspec-init`. Fuzzy idea: `openspec-explore`. Ready to spec: `openspec-propose`. Implement: `openspec-apply-change`. Revise artifacts: `openspec-update-change`. Merge deltas: `openspec-sync-specs`. Done: `openspec-archive-change`.
+
+In Cursor the slash form is `/opsx-propose` (same as skill `openspec-propose`).
+
+Write specs under `openspec/`. Spec Kit only when `.specify/` exists **and** the user asked for Spec Kit.
+
+**Spike exception:** if the user said spike, hypothesis, ad-hoc, or experiment — do **not** run `openspec-propose`. Follow `spike` if that skill is installed. OpenSpec starts only when they say the idea is now a feature.

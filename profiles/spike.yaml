@@ -1,0 +1,10 @@
+name: spike
+skills:
+  - spike
+rules:
+  - spike
+templates:
+  - docs/hypotheses/README.md
+  - docs/hypotheses/_template.md
+  - docs/hypotheses/1970-01-01-example.md
+  - scratch/README.md => .scratch/README.md

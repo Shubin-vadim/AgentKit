@@ -1,0 +1,18 @@
+/* Keep skill names and profile names on one line in catalog tables. */
+.md-typeset table:not([class]) td:first-child code,
+.md-typeset table:not([class]) td:nth-child(3) a {
+  white-space: nowrap;
+}
+
+.md-typeset table:not([class]) td:nth-child(3) {
+  min-width: 7rem;
+}
+
+/* Links from the profiles page land on a skill row below the sticky header. */
+.md-typeset td a[id] {
+  scroll-margin-top: 5rem;
+}
+
+.md-typeset tr:has(a[id]:target) {
+  background-color: var(--md-accent-fg-color--transparent);
+}

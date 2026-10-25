@@ -1,0 +1,10 @@
+---
+description: Serve an LLM with vLLM on an NVIDIA GPU server — follow skill vllm-gpu
+alwaysApply: true
+---
+
+# vLLM GPU
+
+When the user asks to deploy, install, or serve a model with **vLLM** on a **GPU server** (including a blank or unconfigured host), follow skill `vllm-gpu`. Read its `SKILL.md` and run it. Do not invent a parallel Docker or CUDA install.
+
+Local Ollama / Qdrant compose is `llm-infra`, not this. If skill `vllm-gpu` is not installed, say so.
