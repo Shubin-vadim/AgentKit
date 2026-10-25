@@ -16,3 +16,54 @@
 .md-typeset tr:has(a[id]:target) {
   background-color: var(--md-accent-fg-color--transparent);
 }
+
+/* A conversation with the agent: the user on the right, the agent on the left. */
+.md-typeset .chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25em 0;
+}
+
+.md-typeset .chat-msg {
+  max-width: 85%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .chat-msg > :first-child {
+  margin-top: 0;
+}
+
+.md-typeset .chat-msg > :last-child {
+  margin-bottom: 0;
+}
+
+.md-typeset .chat-user {
+  align-self: flex-end;
+  background-color: var(--md-accent-fg-color--transparent);
+  border-bottom-right-radius: 0.2rem;
+}
+
+.md-typeset .chat-agent {
+  align-self: flex-start;
+  background-color: var(--md-code-bg-color);
+  border-bottom-left-radius: 0.2rem;
+}
+
+.md-typeset .chat-who {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .chat-msg {
+    max-width: 100%;
+  }
+}

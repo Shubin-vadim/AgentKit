@@ -11,26 +11,145 @@
 
 ## Install with your agent
 
+You do not run commands yourself. You tell the agent what you are building,
+and it does the rest.
+
 1. Clone the repository:
 
     ```bash
     git clone https://github.com/Shubin-vadim/AgentKit.git
     ```
 
-2. Open the clone in your agent and describe the target project: its path, the
-   work planned there, and which client you use in it.
+2. Open the clone in your agent: Cursor, Claude Code, OpenCode, or Codex.
+3. Describe, in your own words:
+    - **where** the project is (its path),
+    - **what** you will build or do there,
+    - **which agent** you will use in that project (optional; the agent can
+      detect it).
+4. The agent follows the `apply-kit` skill: it picks profiles, shows you one
+   message with the client and profiles it chose and why, and installs after
+   your OK.
 
-    > Install the kit into `~/projects/shop`. It is a new FastAPI service, and
-    > I want ADRs and C4 diagrams. I use Cursor.
+## Examples
 
-3. The agent follows the `apply-kit` skill. It picks profiles from your
-   description, detects the client from the target if you did not name it,
-   and confirms everything in one message before installing.
+### A new service
 
-If you decline installing uv, the agent can still copy the skills. Rules, MCP
-servers, and templates then wait until the installer can run.
+<div class="chat" markdown>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+I'm starting a new FastAPI service for online orders in `~/projects/orders`.
+I want ADRs and C4 diagrams from day one. I use Claude Code.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Install into `~/projects/orders`:
+
+- **Client:** Claude Code — you said so
+- **Profiles:** `core` + `architecture` (ADRs, C4, quality scenarios) +
+  `engineering` (module design, Python code style)
+
+OK, or should I change anything?
+</div>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+Go ahead.
+</div>
+
+</div>
+
+### You did not say which agent you use
+
+The agent looks at the project for `.cursor/`, `.claude/`, `opencode.json`, or
+`.codex/` and suggests what it finds. It never installs for a guessed client
+without asking.
+
+<div class="chat" markdown>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+Set up `D:\work\shop-frontend` — a React storefront, I'll be polishing the UI
+and testing it in a real browser.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Install into `D:\work\shop-frontend`:
+
+- **Client:** Cursor — found `.cursor/` in the project
+- **Profiles:** `core` + `frontend` (distinctive UI) + `playwright` (drive a
+  real browser)
+
+OK, or do you use another agent there: Claude Code, OpenCode, Codex?
+</div>
+
+</div>
+
+### Checking an idea before building it
+
+<div class="chat" markdown>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+In `~/lab/search-test` I want to check whether Qdrant beats Postgres full-text
+search on our product titles. Just an experiment. Codex.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Install into `~/lab/search-test`:
+
+- **Client:** Codex — you said so
+- **Profiles:** `core` + `spike` (hypothesis notes, throwaway code) +
+  `llm-infra` (local Qdrant and Postgres in Docker)
+
+OK?
+</div>
+
+</div>
+
+### Adding more later
+
+`apply-kit` is installed into every project with `core`, so you can ask the
+agent there, without opening the kit again:
+
+<div class="chat" markdown>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+We moved the repo to GitHub. Add whatever helps with pull requests and Actions.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Add `github` (the GitHub MCP server: repositories, issues, pull requests,
+Actions) to this project for Claude Code? You will need
+`GITHUB_PERSONAL_ACCESS_TOKEN` in your environment.
+</div>
+
+</div>
+
+!!! tip "No Python or uv on the machine?"
+    The installer runs with [uv](https://docs.astral.sh/uv/). If it is missing,
+    the agent shows the exact install command and waits for your yes. If you
+    decline, it can still copy the skills; rules, MCP servers, and templates
+    wait until the installer can run.
 
 ## Install from the command line
+
+Everything the agent does goes through this installer, so you can also run it
+yourself:
 
 ```bash
 uv run scripts/kit.py list

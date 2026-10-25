@@ -2,6 +2,30 @@
 
 A library of portable agent skills, rules, MCP definitions, and templates, grouped into profiles. Describe your project to your agent, and it installs the matching profile for your client: Cursor, Claude Code, OpenCode, or Codex. This repository is the source; the assets end up in your projects.
 
+Website: <https://shubin-vadim.github.io/AgentKit/>
+
+## Quick start
+
+You do not run commands yourself: clone this repository, open it in your agent, and tell it what you are about to build and where.
+
+```bash
+git clone https://github.com/Shubin-vadim/AgentKit.git
+```
+
+> **You:** I'm starting a new FastAPI service for online orders in `~/projects/orders`. I want ADRs and C4 diagrams from day one. I use Claude Code.
+>
+> **Agent:** Install into `~/projects/orders`:
+> - **Client:** Claude Code — you said so
+> - **Profiles:** `core` + `architecture` (ADRs, C4, quality scenarios) + `engineering` (module design, Python code style)
+>
+> OK, or should I change anything?
+>
+> **You:** Go ahead.
+>
+> **Agent:** Done. Skills, rules, and MCP servers are in `~/projects/orders` in Claude Code's layout, recorded in `.agent-kit.lock`. Open the project in Claude Code and approve the MCP servers when it asks.
+
+More examples (no client named, an experiment, adding a profile later): [Get started](https://shubin-vadim.github.io/AgentKit/getting-started/#examples).
+
 ## How it works
 
 Assets are written once, in a client-neutral form, and grouped into catalogs for authors. A profile (`profiles/*.yaml`) is the only install list: which skills, rules, MCP definitions, and templates a project gets.
@@ -59,9 +83,21 @@ flowchart TB
 
 ## Install into a project
 
-Open this repository in your agent (Cursor, Claude Code, OpenCode, Codex) and describe the target path, the work planned there, and which client you use in it. The agent follows the `apply-kit` skill (linked from [AGENTS.md](./AGENTS.md)): it picks profiles and runs the installer. You do not need to set up an environment first: if [uv](https://docs.astral.sh/uv/) is missing, the agent offers to install it (through `pip` when Python is present, otherwise with the official uv installer) and waits for your yes. If you decline, it can still copy the skills; rules and MCP servers then wait until the installer can run.
+### With your agent (recommended)
 
-Or run it yourself with [uv](https://docs.astral.sh/uv/) (it sets up Python 3.12+ and Pydantic on first use):
+Open this repository in your agent (Cursor, Claude Code, OpenCode, or Codex) and describe, in your own words:
+
+- **where** the project is (its path);
+- **what** you will build or do there;
+- **which agent** you will use in that project (optional: the agent looks for `.cursor/`, `.claude/`, `opencode.json`, or `.codex/` and asks when unsure).
+
+The agent follows the `apply-kit` skill (linked from [AGENTS.md](./AGENTS.md)): it picks profiles from your description, shows the client and profiles it chose and why in one message, and installs after your OK. `apply-kit` is installed with `core`, so later you can ask the agent inside the project itself, for example "add GitHub support here".
+
+You do not need to set up an environment first: if [uv](https://docs.astral.sh/uv/) is missing, the agent offers to install it (through `pip` when Python is present, otherwise with the official uv installer) and waits for your yes. If you decline, it can still copy the skills; rules and MCP servers then wait until the installer can run.
+
+### From the command line
+
+The agent runs this same installer; you can also call it yourself with [uv](https://docs.astral.sh/uv/) (it sets up Python 3.12+ and Pydantic on first use):
 
 ```bash
 uv run scripts/kit.py list

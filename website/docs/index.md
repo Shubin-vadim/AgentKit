@@ -17,6 +17,51 @@ library and installs them into your project for **Cursor**, **Claude Code**,
 [Browse skills](skills.md){ .md-button }
 [View on GitHub](https://github.com/Shubin-vadim/AgentKit){ .md-button }
 
+## Just tell your agent
+
+No commands to learn. Open this repository in your agent and describe the
+project you are about to build and where it lives:
+
+<div class="chat" markdown>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+I'm starting a new FastAPI service for online orders in `~/projects/orders`.
+I want ADRs and C4 diagrams from day one. I use Claude Code.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Install into `~/projects/orders`:
+
+- **Client:** Claude Code — you said so
+- **Profiles:** `core` + `architecture` (ADRs, C4, quality scenarios) +
+  `engineering` (module design, Python code style)
+
+OK, or should I change anything?
+</div>
+
+<div class="chat-msg chat-user" markdown>
+<span class="chat-who">You</span>
+
+Go ahead.
+</div>
+
+<div class="chat-msg chat-agent" markdown>
+<span class="chat-who">Agent</span>
+
+Done. Skills, rules, and MCP servers are in `~/projects/orders` in Claude
+Code's layout, recorded in `.agent-kit.lock`. Open the project in Claude Code
+and approve the MCP servers when it asks.
+</div>
+
+</div>
+
+The agent picks the profiles, asks you to confirm, and runs the installer.
+[See more examples](getting-started.md#examples).
+
 <div class="grid cards" markdown>
 
 -   :material-robot-outline:{ .lg .middle } **Agent-driven install**
@@ -57,14 +102,11 @@ library and installs them into your project for **Cursor**, **Claude Code**,
 
 </div>
 
-## Quick start
+??? note "Prefer the terminal?"
 
-Clone the repository, open it in your agent, and say what you are building:
+    The agent runs the same installer you can call yourself with
+    [uv](https://docs.astral.sh/uv/):
 
-> Install the kit into `~/projects/shop` — a new backend service, I use Claude Code.
-
-Or run the installer yourself with [uv](https://docs.astral.sh/uv/):
-
-```bash
-uv run scripts/kit.py install --target ~/projects/shop --client claude --profile architecture,engineering
-```
+    ```bash
+    uv run scripts/kit.py install --target ~/projects/orders --client claude --profile architecture,engineering
+    ```
